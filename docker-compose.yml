@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:5.7
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./docker/mysql:/etc/mysql/conf.d
+    restart: always
+    command: --max_allowed_packet=268435456
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: database
+      MYSQL_USER: database_user
+      MYSQL_PASSWORD: secret
+    networks:
+      - database
+
+  dotnet:
+    depends_on:
+      - database
+    build: ./docker/dotnet
+    volumes:
+      - ./:/app
+    restart: always
+    links:
+      - database
+    networks:
+      - app
+      - database
+
+  nginx:
+    depends_on:
+      - dotnet
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - dotnet
+    networks:
+      - app
+
+volumes:
+  dbdata:
+
+networks:
+  app:
+    driver: bridge
+  database:
+    driver: bridge
