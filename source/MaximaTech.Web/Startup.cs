@@ -1,3 +1,4 @@
+using System;
 using MaximaTech.Api.Configuration;
 using MaximaTech.Web.Configuration;
 using Microsoft.AspNetCore.Builder;
@@ -25,6 +26,15 @@ namespace MaximaTech.Web
             services.AddApplicationServices();
 
             services.AddControllersWithViews();
+
+            services.AddAuthentication("MaximaTechScheme")
+                .AddCookie("MaximaTechScheme", options =>
+                {
+                    options.AccessDeniedPath = "/login";
+                    options.LoginPath = "/login";
+                    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+                    options.Cookie.Name = "MaximaTechScheme.Auth";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

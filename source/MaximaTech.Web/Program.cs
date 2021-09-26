@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MaximaTech.Infrastructure.Data;
+using MaximaTech.Infrastructure.Seeds;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,7 @@ namespace MaximaTech.Web
                 IServiceProvider services = scope.ServiceProvider;
 
                 DatabaseMigration.Run(services);
+                DatabaseSeed.Run(services);
             }
 
             host.Run();
