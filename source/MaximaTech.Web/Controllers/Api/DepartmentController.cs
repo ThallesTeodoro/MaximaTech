@@ -16,7 +16,6 @@ namespace MaximaTech.Web.Controllers.Api
     [Route("api/department")]
     public class DepartmentController : ControllerBase
     {
-        protected readonly IUnitOfWork _uow;
         protected readonly IMediator _mediator;
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace MaximaTech.Web.Controllers.Api
         /// <param name="mediator"></param>
         public DepartmentController(IUnitOfWork uow, IMediator mediator)
         {
-            _uow = uow;
             _mediator = mediator;
         }
 

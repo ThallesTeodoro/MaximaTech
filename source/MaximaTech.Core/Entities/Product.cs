@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Bogus;
 
 namespace MaximaTech.Core.Entities
 {
@@ -29,5 +30,20 @@ namespace MaximaTech.Core.Entities
         /// Navigation properties
         /// </summary>
         public virtual Department Department { get; set; }
+
+        /// <summary>
+        /// Faker
+        /// </summary>
+        public static Faker<Product> Faker()
+        {
+            return new Faker<Product>()
+                .RuleFor(c => c.Id, f => Guid.NewGuid())
+                .RuleFor(u => u.Code, f => f.Lorem.Letter(10))
+                .RuleFor(u => u.Description, f => f.Lorem.Paragraph())
+                .RuleFor(u => u.Price, f => Math.Round(f.Random.Double(1, 100), 2))
+                .RuleFor(u => u.Status, f => true)
+                .RuleFor(u => u.CreatedAt, f => DateTime.UtcNow)
+                .RuleFor(u => u.UpdatedAt, f => DateTime.UtcNow);
+        }
     }
 }

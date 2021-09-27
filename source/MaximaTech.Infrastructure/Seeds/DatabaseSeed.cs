@@ -13,6 +13,9 @@ namespace MaximaTech.Infrastructure.Seeds
             UserSeed.Run(services);
             DepartmentSeed.Run(services);
             uow.Commit();
+
+            ProductSeed.Run(services);
+            uow.Commit();
         }
     }
 }

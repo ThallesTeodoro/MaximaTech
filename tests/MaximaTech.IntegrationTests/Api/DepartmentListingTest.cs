@@ -7,7 +7,7 @@ using Xunit;
 
 namespace MaximaTech.IntegrationTests.Api
 {
-    public class ListingTest : IntegrationTestBase
+    public class DepartmentListingTest : IntegrationTestBase
     {
         [Fact]
         public async Task Index_WhenCalled_ReturnSuccess()
