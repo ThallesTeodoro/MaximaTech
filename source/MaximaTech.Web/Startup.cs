@@ -1,7 +1,6 @@
 using System;
 using AutoMapper;
 using MaximaTech.Core.Entities;
-using MaximaTech.Domain.Commands.Responses;
 using MaximaTech.Web.Configuration;
 using MediatR;
 using Microsoft.AspNetCore.Builder;

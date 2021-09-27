@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using MaximaTech.Core.Entities;
+using MaximaTech.Domain.Validation;
 using MediatR;
 
 namespace MaximaTech.Domain.Commands.Requests
@@ -16,6 +17,7 @@ namespace MaximaTech.Domain.Commands.Requests
         public string Description { get; set; }
 
         [Required]
+        [PlatformGroupIdExists]
         public Guid DepartmentId { get; set; }
 
         [Required]
