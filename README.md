@@ -8,16 +8,12 @@
 
 ---
 
-## Setup (Front-end)
+## Setup
 
 ### Requirements
 
 - Docker
 - Docker Compose
-
-### Environment file
-
-Create `source/Taxonomy.Api/appsettings.Development.json` file with all content of `source/Taxonomy.Api/appsettings.json` file.
 
 ### Up containers
 
@@ -27,11 +23,13 @@ docker-compose up -d
 
 ## URLs
 
-- API: http://localhost:5000/api
-- Documentation: http://localhost:5000/api/swagger
+- Application: http://localhost:8000
+- API: http://localhost:8000/api
 
-### Run tests
 
-```bash
-dotnet test
-```
+## Access
+
+> You will be able to access the panel with the following credentials:
+
+- Email: admin@maximatech.com
+- Password: secret
