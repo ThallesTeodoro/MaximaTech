@@ -85,3 +85,7 @@ docker-compose up -d
 
 - Email: admin@maximatech.com
 - Password: secret
+
+---
+
+You may want to run it with dotnet cli. For that, just up the database container (docker-compose up -d database) and then run "dotnet watch -p source/MaximaTech.Web/MaximaTech.Web.csproj run"
