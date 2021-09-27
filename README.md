@@ -1,11 +1,63 @@
 # MaximaTech
 
-## Directories
+The purpose of this project is to show some of what I know. The project consists of make a CRUD of products.
 
-- `/source`: Project files
-- `/tests`: Project tests
-- `/docker`: Docker setup files
+## Technologies
 
+- C# (Csharp)
+- .Net Core
+- Entity Framework Core
+- Mysql
+
+## Directory Structure
+
+```
+.
+├── docker
+│   ├── dotnet
+│   │   └── Dockerfile
+│   ├── mysql
+|   |   └── custom.cnf
+│   └── mysql
+|       └── nginx.conf
+├── source
+│   ├── MaximaTech.Core
+│   │   ├── DTOs
+│   │   ├── Entities
+│   │   └── Interfaces
+│   │      ├── Repositores
+│   │      └── Services
+│   ├── MaximaTech.Domain
+│   │   ├── Commands
+│   │   ├── Exceptions
+│   │   └── Handlers
+│   ├── MaximaTech.Infrastructure
+│   │   ├── Data
+│   │   ├── Migrations
+│   │   ├── Repositories
+│   │   ├── Services
+│   │   └── Validations
+│   └── MaximaTech.Web
+│       ├── Configuration
+│       ├── Controllers
+│       ├── Extensions
+│       ├── Filters
+│       ├── Helpers
+│       ├── Models
+│       ├── Properties
+│       ├── Views
+│       ├── wwwroot
+│       ├── Startup.cs
+│       └── Program.cs
+├── tests
+│   └── MaximaTech.IntegrationTests
+├── .dockerignore
+├── .editorconfig
+├── .gitignore
+├── docker-compose.yml
+├── MaximaTech.sln
+└── README.md
+```
 ---
 
 ## Setup
