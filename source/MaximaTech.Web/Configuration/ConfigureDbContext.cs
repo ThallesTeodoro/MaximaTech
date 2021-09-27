@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MaximaTech.Api.Configuration
+namespace MaximaTech.Web.Configuration
 {
     public static class ConfigureDbContext
     {

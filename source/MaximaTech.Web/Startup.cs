@@ -1,11 +1,15 @@
 using System;
-using MaximaTech.Api.Configuration;
+using AutoMapper;
+using MaximaTech.Core.Entities;
+using MaximaTech.Domain.Commands.Responses;
 using MaximaTech.Web.Configuration;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 
 namespace MaximaTech.Web
 {
@@ -25,7 +29,16 @@ namespace MaximaTech.Web
 
             services.AddApplicationServices();
 
-            services.AddControllersWithViews();
+            services.AddMediatR(AppDomain.CurrentDomain.Load("MaximaTech.Domain"));
+
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                });
+
+            services.AddHttpContextAccessor();
 
             services.AddAuthentication("MaximaTechScheme")
                 .AddCookie("MaximaTechScheme", options =>

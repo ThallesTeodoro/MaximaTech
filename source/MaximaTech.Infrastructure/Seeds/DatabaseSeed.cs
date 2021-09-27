@@ -11,6 +11,7 @@ namespace MaximaTech.Infrastructure.Seeds
             IUnitOfWork uow = services.GetRequiredService<IUnitOfWork>();
 
             UserSeed.Run(services);
+            DepartmentSeed.Run(services);
             uow.Commit();
         }
     }
